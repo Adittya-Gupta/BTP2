@@ -32,9 +32,9 @@ def read_ner_data(file_path):
     return {'tokens': tokens_list, 'ner_tags': ner_tags_list}
 
 # Load data from local files
-train_data = read_ner_data('../FewNERD/en3_FewNERD_BIO.txt')
-validation_data = read_ner_data('../FewNERD/Public/FewNERD_dev.txt')
-test_data = read_ner_data('../FewNERD/Public/FewNERD_test.txt')
+train_data = read_ner_data('./MCN2_en_train.conll')
+validation_data = read_ner_data('./MCN2_en_dev.conll')
+test_data = read_ner_data('./MCN2_en_test.conll')
 
 # Create datasets
 train_dataset = Dataset.from_dict(train_data)
@@ -192,7 +192,7 @@ results = metric.compute(predictions=true_predictions, references=true_labels)
 print("\nResults:", results)
 
 # Save final results to a text file
-with open("final_results_en3_FewNERD.txt", "w") as file:
+with open("final_results_MCN2.txt", "w") as file:
     # Overall metrics
     file.write(f"Overall Precision: {results['overall_precision']}\n")
     file.write(f"Overall Recall: {results['overall_recall']}\n")
